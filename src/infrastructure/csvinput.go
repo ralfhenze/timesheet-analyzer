@@ -9,13 +9,13 @@ import (
 	"timesheet-analyzer/core"
 )
 
-func GetTimesheetEntriesFromCsvFile(filePath string) []core.TimesheetEntry {
+func GetTimesheetFromCsvFile(filePath string) core.Timesheet {
 	csvBytes, _ := os.ReadFile(filePath)
 
-	return GetTimesheetEntriesFromCsvString(string(csvBytes))
+	return GetTimesheetFromCsvString(string(csvBytes))
 }
 
-func GetTimesheetEntriesFromCsvString(csvString string) []core.TimesheetEntry {
+func GetTimesheetFromCsvString(csvString string) core.Timesheet {
 	buffer := bytes.NewReader([]byte(csvString))
 
 	csvReader := csv.NewReader(buffer)
@@ -38,5 +38,5 @@ func GetTimesheetEntriesFromCsvString(csvString string) []core.TimesheetEntry {
 		entries = append(entries, entry)
 	}
 
-	return entries
+	return core.NewTimesheet(entries)
 }

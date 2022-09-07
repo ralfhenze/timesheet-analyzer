@@ -2,19 +2,18 @@ package main
 
 import (
 	"fmt"
-	"timesheet-analyzer/core"
 	"timesheet-analyzer/infrastructure"
 )
 
 func main() {
 
-	entries := infrastructure.GetTimesheetEntriesFromCsvFile(
+	timesheet := infrastructure.GetTimesheetFromCsvFile(
 		"../examples/timesheet1.csv",
 	)
 
 	fmt.Println("\n--------------- Durations per Bucket ---------------")
 
-	durationSums := core.GetDurationSumsPerBucket(entries)
+	durationSums := timesheet.GetDurationSumsPerBucket()
 
 	for _, sum := range durationSums {
 		fmt.Println(sum)
@@ -22,5 +21,5 @@ func main() {
 
 	fmt.Println("\n--------------- Overall Duration ---------------")
 
-	fmt.Println(core.GetOverallDuration(entries))
+	fmt.Println(timesheet.GetOverallDuration())
 }

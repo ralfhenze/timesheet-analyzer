@@ -7,16 +7,18 @@ import (
 
 func Test__The_user_can_get_a_list_of_durations_per_bucket(t *testing.T) {
 	now := time.Now()
-	threeHours, _ := time.ParseDuration("3h")
 	twoHours, _ := time.ParseDuration("2h")
+	threeHours, _ := time.ParseDuration("3h")
 
-	entries := []TimesheetEntry{
-		{now, now.Add(threeHours), "B", "bla"},
-		{now, now.Add(twoHours), "B", "bla"},
-		{now, now.Add(twoHours), "C", "bla"},
-	}
+	timesheet := NewTimesheet(
+		[]TimesheetEntry{
+			{now, now.Add(threeHours), "B", "bla"},
+			{now, now.Add(twoHours), "B", "bla"},
+			{now, now.Add(twoHours), "C", "bla"},
+		},
+	)
 
-	bucketDurations := GetDurationSumsPerBucket(entries)
+	bucketDurations := timesheet.GetDurationSumsPerBucket()
 
 	if len(bucketDurations) != 2 {
 		t.Errorf("Expected one bucket duration, but got %d", len(bucketDurations))
