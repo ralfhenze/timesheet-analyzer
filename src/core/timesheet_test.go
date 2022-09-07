@@ -18,15 +18,16 @@ func Test__The_user_can_get_a_list_of_durations_per_bucket(t *testing.T) {
 		},
 	)
 
-	bucketDurations := timesheet.GetDurationSumsPerBucket()
+	bucketDurations := timesheet.GetDurationsPerBucket()
 
 	if len(bucketDurations) != 2 {
-		t.Errorf("Expected one bucket duration, but got %d", len(bucketDurations))
+		t.Errorf("Expected two bucket durations, but got %d", len(bucketDurations))
 	}
-	if bucketDurations[0] != "B: 05:00" {
-		t.Errorf("Expected a duration of 05:00 for bucket B, but got %s", bucketDurations[0])
+	fiveHours, _ := time.ParseDuration("5h")
+	if bucketDurations["B"] != fiveHours {
+		t.Errorf("Expected a duration of %s for bucket B, but got %s", fiveHours, bucketDurations["B"])
 	}
-	if bucketDurations[1] != "C: 02:00" {
-		t.Errorf("Expected a duration of 02:00 for bucket C, but got %s", bucketDurations[1])
+	if bucketDurations["C"] != twoHours {
+		t.Errorf("Expected a duration of %s for bucket C, but got %s", twoHours, bucketDurations["C"])
 	}
 }

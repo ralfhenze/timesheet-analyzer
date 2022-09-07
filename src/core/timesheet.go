@@ -15,8 +15,8 @@ func NewTimesheet(entries []TimesheetEntry) Timesheet {
 	}
 }
 
-func (ts *Timesheet) GetDurationSumsPerBucket() []string {
-	var durationSums []string
+func (ts *Timesheet) GetDurationsPerBucket() map[string]time.Duration {
+	durationSums := make(map[string]time.Duration)
 	buckets := make(map[string][]TimesheetEntry)
 
 	for _, entry := range ts.entries {
@@ -30,10 +30,7 @@ func (ts *Timesheet) GetDurationSumsPerBucket() []string {
 			duration += bucketEntry.GetDuration()
 		}
 
-		hours := int(duration.Minutes()) / 60
-		minutes := int(duration.Minutes()) % 60
-
-		durationSums = append(durationSums, fmt.Sprintf("%s: %02d:%02d", bucket, hours, minutes))
+		durationSums[bucket] = duration
 	}
 
 	return durationSums

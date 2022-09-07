@@ -13,10 +13,10 @@ func main() {
 
 	fmt.Println("\n--------------- Durations per Bucket ---------------")
 
-	durationSums := timesheet.GetDurationSumsPerBucket()
+	durations := timesheet.GetDurationsPerBucket()
 
-	for _, sum := range durationSums {
-		fmt.Println(sum)
+	for bucket, duration := range durations {
+		fmt.Println(bucket + ": " + infrastructure.GetDurationStringHhMm(duration))
 	}
 
 	fmt.Println("\n--------------- Overall Duration ---------------")
