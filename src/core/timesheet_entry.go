@@ -2,13 +2,13 @@ package core
 
 import "time"
 
-type TimeTrackEntry struct {
+type TimesheetEntry struct {
 	Start   time.Time
 	End     time.Time
 	Bucket  string
 	Comment string
 }
 
-func (entry *TimeTrackEntry) GetDuration() time.Duration {
+func (entry *TimesheetEntry) GetDuration() time.Duration {
 	return entry.End.Sub(entry.Start)
 }

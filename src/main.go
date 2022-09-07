@@ -8,7 +8,7 @@ import (
 
 func main() {
 
-	entries := infrastructure.GetTimeTrackEntriesFromCsvFile(
+	entries := infrastructure.GetTimesheetEntriesFromCsvFile(
 		"../examples/timesheet1.csv",
 	)
 

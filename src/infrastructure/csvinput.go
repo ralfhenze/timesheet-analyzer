@@ -9,23 +9,23 @@ import (
 	"timesheet-analyzer/core"
 )
 
-func GetTimeTrackEntriesFromCsvFile(filePath string) []core.TimeTrackEntry {
+func GetTimesheetEntriesFromCsvFile(filePath string) []core.TimesheetEntry {
 	csvBytes, _ := os.ReadFile(filePath)
 
-	return GetTimeTrackEntriesFromCsvString(string(csvBytes))
+	return GetTimesheetEntriesFromCsvString(string(csvBytes))
 }
 
-func GetTimeTrackEntriesFromCsvString(csvString string) []core.TimeTrackEntry {
+func GetTimesheetEntriesFromCsvString(csvString string) []core.TimesheetEntry {
 	buffer := bytes.NewReader([]byte(csvString))
 
 	csvReader := csv.NewReader(buffer)
 	csvReader.Comma = '\t'
 	csvLines, _ := csvReader.ReadAll()
 
-	var entries []core.TimeTrackEntry
+	var entries []core.TimesheetEntry
 
 	for i, line := range csvLines {
-		var entry core.TimeTrackEntry
+		var entry core.TimesheetEntry
 
 		entry.Start, _ = time.Parse("2006-01-02 15:04:05", line[0]+" "+line[1]+":00")
 		entry.End, _ = time.Parse("2006-01-02 15:04:05", line[0]+" "+line[2]+":00")

@@ -5,9 +5,9 @@ import (
 	"time"
 )
 
-func GetDurationSumsPerBucket(entries []TimeTrackEntry) []string {
+func GetDurationSumsPerBucket(entries []TimesheetEntry) []string {
 	var durationSums []string
-	buckets := make(map[string][]TimeTrackEntry)
+	buckets := make(map[string][]TimesheetEntry)
 
 	for _, entry := range entries {
 		buckets[entry.Bucket] = append(buckets[entry.Bucket], entry)
@@ -29,7 +29,7 @@ func GetDurationSumsPerBucket(entries []TimeTrackEntry) []string {
 	return durationSums
 }
 
-func GetOverallDuration(entries []TimeTrackEntry) string {
+func GetOverallDuration(entries []TimesheetEntry) string {
 
 	var durationSum time.Duration
 

@@ -10,7 +10,7 @@ func Test__The_user_can_get_a_list_of_durations_per_bucket(t *testing.T) {
 	threeHours, _ := time.ParseDuration("3h")
 	twoHours, _ := time.ParseDuration("2h")
 
-	entries := []TimeTrackEntry{
+	entries := []TimesheetEntry{
 		{now, now.Add(threeHours), "B", "bla"},
 		{now, now.Add(twoHours), "B", "bla"},
 		{now, now.Add(twoHours), "C", "bla"},
