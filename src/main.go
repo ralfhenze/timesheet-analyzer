@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"timetracker/core"
-	"timetracker/infrastructure"
+	"timesheet-analyzer/core"
+	"timesheet-analyzer/infrastructure"
 )
 
 func main() {

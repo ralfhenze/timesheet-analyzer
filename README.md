@@ -1,4 +1,4 @@
 
-# Time Tracker
+# Timesheet Analyzer
 
-A simple command-line application to track working hours and calculate statistics. Written in Go.
+A simple command-line application to calculate statistics from CSV timesheets. Written in Go.

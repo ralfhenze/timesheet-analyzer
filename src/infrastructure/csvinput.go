@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 	"time"
-	"timetracker/core"
+	"timesheet-analyzer/core"
 )
 
 func GetTimeTrackEntriesFromCsvFile(filePath string) []core.TimeTrackEntry {
