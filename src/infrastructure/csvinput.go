@@ -30,8 +30,6 @@ func GetTimeTrackEntriesFromCsvString(csvString string) []core.TimeTrackEntry {
 		entry.Start, _ = time.Parse("2006-01-02 15:04:05", line[0]+" "+line[1]+":00")
 		entry.End, _ = time.Parse("2006-01-02 15:04:05", line[0]+" "+line[2]+":00")
 
-		entry.Duration = entry.End.Sub(entry.Start)
-
 		entry.Bucket = line[3]
 		entry.Comment = line[4]
 

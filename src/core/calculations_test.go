@@ -11,9 +11,9 @@ func Test__The_user_can_get_a_list_of_durations_per_bucket(t *testing.T) {
 	twoHours, _ := time.ParseDuration("2h")
 
 	entries := []TimeTrackEntry{
-		{now, now, threeHours, "B", "bla"},
-		{now, now, twoHours, "B", "bla"},
-		{now, now, twoHours, "C", "bla"},
+		{now, now.Add(threeHours), "B", "bla"},
+		{now, now.Add(twoHours), "B", "bla"},
+		{now, now.Add(twoHours), "C", "bla"},
 	}
 
 	bucketDurations := GetDurationSumsPerBucket(entries)

@@ -17,7 +17,7 @@ func GetDurationSumsPerBucket(entries []TimeTrackEntry) []string {
 		var duration time.Duration
 
 		for _, bucketEntry := range bucketEntries {
-			duration += bucketEntry.Duration
+			duration += bucketEntry.GetDuration()
 		}
 
 		hours := int(duration.Minutes()) / 60
@@ -34,7 +34,7 @@ func GetOverallDuration(entries []TimeTrackEntry) string {
 	var durationSum time.Duration
 
 	for _, entry := range entries {
-		durationSum += entry.Duration
+		durationSum += entry.GetDuration()
 	}
 
 	hours := int(durationSum.Minutes()) / 60
