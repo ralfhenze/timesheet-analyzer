@@ -31,3 +31,24 @@ func Test__The_user_can_get_a_list_of_durations_per_bucket(t *testing.T) {
 		t.Errorf("Expected a duration of %s for bucket C, but got %s", twoHours, bucketDurations["C"])
 	}
 }
+
+func Test__The_user_can_get_the_overall_duration_of_the_timesheet(t *testing.T) {
+	now := time.Now()
+	twoHours, _ := time.ParseDuration("2h")
+	threeHours, _ := time.ParseDuration("3h")
+
+	timesheet := NewTimesheet(
+		[]TimesheetEntry{
+			{now, now.Add(threeHours), "B", "bla"},
+			{now, now.Add(twoHours), "B", "bla"},
+			{now, now.Add(twoHours), "C", "bla"},
+		},
+	)
+
+	overallDuration := timesheet.GetOverallDuration()
+
+	sevenHours, _ := time.ParseDuration("7h")
+	if overallDuration != sevenHours {
+		t.Errorf("Expected an overall duration of %s, but got %s", sevenHours, overallDuration)
+	}
+}
