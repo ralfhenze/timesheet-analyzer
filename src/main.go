@@ -9,7 +9,7 @@ import (
 func main() {
 
 	entries := infrastructure.GetTimeTrackEntriesFromCsvFile(
-		"/home/ralf/Business/2022/Leistungsnachweise/Stundenzettel/Nextbike Stundenzettel 2022-08.csv",
+		"../examples/timesheet1.csv",
 	)
 
 	fmt.Println("\n--------------- Durations per Bucket ---------------")
