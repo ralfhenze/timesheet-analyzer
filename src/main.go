@@ -20,6 +20,7 @@ func main() {
 	}
 
 	fmt.Println("\n--------------- Overall Duration ---------------")
+	overallDuration := timesheet.GetOverallDuration()
 
-	fmt.Println(timesheet.GetOverallDuration())
+	fmt.Println(infrastructure.GetDurationStringHhMm(overallDuration))
 }

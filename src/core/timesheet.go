@@ -1,7 +1,6 @@
 package core
 
 import (
-	"fmt"
 	"time"
 )
 
@@ -36,16 +35,13 @@ func (ts *Timesheet) GetDurationsPerBucket() map[string]time.Duration {
 	return durationSums
 }
 
-func (ts *Timesheet) GetOverallDuration() string {
+func (ts *Timesheet) GetOverallDuration() time.Duration {
 
-	var durationSum time.Duration
+	var overallDuration time.Duration
 
 	for _, entry := range ts.entries {
-		durationSum += entry.GetDuration()
+		overallDuration += entry.GetDuration()
 	}
 
-	hours := int(durationSum.Minutes()) / 60
-	minutes := int(durationSum.Minutes()) % 60
-
-	return fmt.Sprintf("%02d:%02d", hours, minutes)
+	return overallDuration
 }
