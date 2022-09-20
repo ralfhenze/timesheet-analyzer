@@ -2,14 +2,15 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"os"
 	"timesheet-analyzer/infrastructure"
 )
 
 func main() {
+	stdinBytes, _ := ioutil.ReadAll(os.Stdin)
 
-	timesheet := infrastructure.GetTimesheetFromCsvFile(
-		"../examples/timesheet1.csv",
-	)
+	timesheet := infrastructure.GetTimesheetFromCsvString(string(stdinBytes))
 
 	fmt.Println("\n--------------- Durations per Bucket ---------------")
 

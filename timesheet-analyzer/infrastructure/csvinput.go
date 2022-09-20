@@ -4,16 +4,9 @@ import (
 	"bytes"
 	"encoding/csv"
 	"fmt"
-	"os"
 	"time"
 	"timesheet-analyzer/core"
 )
-
-func GetTimesheetFromCsvFile(filePath string) core.Timesheet {
-	csvBytes, _ := os.ReadFile(filePath)
-
-	return GetTimesheetFromCsvString(string(csvBytes))
-}
 
 func GetTimesheetFromCsvString(csvString string) core.Timesheet {
 	buffer := bytes.NewReader([]byte(csvString))
