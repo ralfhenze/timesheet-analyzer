@@ -5,12 +5,12 @@ A simple command-line application to calculate statistics from CSV timesheets. W
 
 ## Why?
 
-I was sick of manually tracking and managing my working hours with Excel / LibreOffice Calc. Of course there a lot of
-"professional" time tracking tools out there. I don't care. I wanted something simple that works exclusively on the
+I was sick of manually tracking and managing my working hours with Excel / LibreOffice Calc. Of course there are a lot
+of "professional" time tracking tools out there. I don't care. I wanted something simple that works exclusively on the
 command-line and offline.
 
 
-## CSV Timesheet Format
+## Expected CSV Timesheet Format
 
 ### Example
 ```
@@ -19,15 +19,16 @@ command-line and offline.
 2022-09-01	13:00	14:55	B	Working on the second Ticket
 ```
 ### Columns
-1. Date in YYYY-MM-DD format
-2. Start Time in HH:MM format
-3. End Time in HH:MM format
-4. Bucket (duration sums will be calculated per bucket)
-5. Comment
+1. **Date** in YYYY-MM-DD format
+2. **Start Time** in HH:MM format
+3. **End Time** in HH:MM format
+4. **Bucket** duration sums will be calculated per bucket
+5. **Comment**
 
 ### Delimiters
-* Columns must be delimited by a tabulator `\t` (not by comma `,` or semicolon `;`)
-* Line endings must be Linux line endings `\n` (no Windows `\r\n` or Mac `\r`)
+* columns must be delimited by a tabulator `\t` (not by comma `,` or semicolon `;`)
+* line endings must be Linux line endings `\n` (no Windows `\r\n` or Mac `\r`)
+* blank lines will be ignored (they might be added between different days for better readability)
 
 
 ## Build Instructions
